@@ -9,12 +9,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    fetch("https://randomuser.me/api/?results=8")
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=Yogyakarta,id&mode=json&appid=6a3f7c3d350fe4972b954584997d09f0&units=metric")
     .then(res => res.json())
     .then(parsedJSON => parsedJSON.results.map(data => (
       {
-        id: `${data.id.name}`,
-        firstName: `${data.name.first}`,
+        dt: `${data.list.dt}`,
+        temp: `${data.list.main.temp}`,
         lastName: `${data.name.last}`,
         location: `${data.location.state}, ${data.nat}`,
         thumbnail: `${data.picture.large}`,
